@@ -61,13 +61,7 @@ url-shortener/
 
 ---
 
-## 🧠 Made With Purpose
-
-This project was built with the spirit of **#LearningByDoing**. Inspired by the hands-on guidance of **#DrGViswanathan** and the ecosystem at **#VITBhopal**, SnapLink reflects a commitment to continuous improvement and **#LifelongLearning**.
-
----
-
 ## 📌 Author
 
-Made by [Vats Pratap Singh](https://www.linkedin.com/in/vatspratapsingh)  
-#C++ #VITBhopalLion
+Made by [Vats Pratap Singh](https://www.linkedin.com/in/vats-pratap-singh/)  
+
