@@ -1,67 +1,108 @@
-# 🔗 SnapLink - Smart URL Shortener
+# 🔗 URL Shortener
 
-SnapLink is a lightweight and fast URL shortener built using **C++** for the backend and **Next.js** for the frontend. It offers a sleek, responsive UI with animated transitions and clipboard copy functionality. Designed for performance and simplicity, SnapLink allows users to shorten long URLs and access them via unique short codes.
+A simple full-stack URL shortening application built with:
 
----
-
-## 🚀 Features
-
-- 🔒 Unique short URL generation
-- 🔁 Instant redirection based on short ID
-- 📋 One-click copy-to-clipboard
-- 🌑 Clean and modern dark-mode UI
-- ⚡ Built for speed and simplicity
+- ⚙️ **C++** backend server using `httplib.h` and `nlohmann/json.hpp`
+- 🌐 **Next.js** frontend with Tailwind CSS
+- 📦 JSON-based flat file database
 
 ---
 
-## 🧰 Tech Stack
+## ✨ Features
 
-- **Backend**: C++ (custom-built HTTP server)
-- **Frontend**: Next.js 15 (App Router)
-- **Styling**: Inline CSS + Tailwind (optional)
-- **Extras**: Framer Motion for animations
+- Shorten long URLs into compact ones like:  
+  `http://localhost:3000/s/abc123`
+- Auto-redirect to the original URL when visiting the short link
+- Duplicate URL detection — avoids creating multiple entries
+- Frontend + backend run together with a single command
 
 ---
 
-## 📂 Project Structure
+## 🗂️ Project Structure
 
 ```
 url-shortener/
-├── backend/           # C++ backend server and DB logic
-│   └── server         # Binary built from main.cpp
-├── frontend/          # Next.js frontend application
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── page.js          # Main URL shortener page
-│   │   │   └── s/[id]/page.tsx  # Redirection handler
-│   │   └── styles/ (optional)
-│   └── public/
-└── db.txt             # URL mappings stored here
+├── backend/          # C++ server code
+│   ├── main.cpp
+│   └── db.txt        # Flat file database
+├── frontend/         # Next.js frontend
+│   ├── app/
+│   │   ├── page.tsx              # Main UI
+│   │   └── s/[id]/page.tsx       # Redirect logic
+│   └── package.json
+└── README.md
 ```
 
 ---
 
-## 🛠️ Running the Project
+## 🚀 Getting Started
 
-1. **Start Backend**  
-   Open terminal in `backend/` and compile your C++ server, then run:
-   ```bash
-   ./server
-   ```
+### 1. Clone the repository (or set up manually)
+```bash
+cd ~/Documents
+mkdir url-shortener
+```
 
-2. **Start Frontend**  
-   In `frontend/`, run:
-   ```bash
-   npm install
-   npm run dev
-   ```
+### 2. 🖥️ Backend Setup
 
-3. **Visit App**  
-   Navigate to: [http://localhost:3000](http://localhost:3000)
+Install headers (if not already):
+```bash
+cd url-shortener/backend
+curl -O https://raw.githubusercontent.com/yhirose/cpp-httplib/master/httplib.h
+curl -O https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp
+```
+
+Compile backend:
+```bash
+g++ -std=c++17 main.cpp -o server
+```
+
+### 3. 🌐 Frontend Setup
+
+```bash
+cd ../frontend
+npm install
+```
+
+To allow backend+frontend together, install concurrently:
+```bash
+npm install concurrently
+```
 
 ---
 
-## 📌 Author
+## ▶️ Run the Full App
 
-Made by [Vats Pratap Singh](https://www.linkedin.com/in/vats-pratap-singh/)  
+From the `frontend/` folder:
 
+```bash
+npm run dev
+```
+
+This will:
+- Start backend C++ server on port `18080`
+- Start frontend at `http://localhost:3000`
+
+---
+
+## 🧪 Test
+
+1. Open browser → `http://localhost:3000`
+2. Paste a long URL and click **Shorten**
+3. Click the generated short link
+4. It redirects to original URL!
+
+---
+
+## 🛠 Future Improvements
+
+- Persistent database (SQLite or MongoDB)
+- Authenticated users & history
+- Analytics dashboard
+- Custom short IDs
+
+---
+
+## 📄 License
+
+MIT — free to use & modify.
